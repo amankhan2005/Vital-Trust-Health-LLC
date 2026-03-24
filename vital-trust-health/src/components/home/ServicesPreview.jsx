@@ -1,50 +1,87 @@
- import Container from "../layout/Container";
+import Container from "../layout/Container";
 import { Link } from "react-router-dom";
 import servicesData from "../../data/servicesData";
 
 const ServicesPreview = () => {
   return (
-    <section className="bg-secondary py-20">
-      <Container>
+    <section className="py-24 bg-slate-50 relative overflow-hidden">
+      
+      {/* Background Decorative Elements */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
+        <div className="absolute top-[-5%] right-[-10%] w-96 h-96 bg-teal-500/5 rounded-full blur-[120px]"></div>
+        <div className="absolute bottom-[-10%] left-[-5%] w-96 h-96 bg-orange-500/5 rounded-full blur-[120px]"></div>
+      </div>
 
-        {/* Heading */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-primary mb-3">
-            Our Services
+      <Container>
+        
+        {/* Heading Section */}
+        <div className="text-center mb-16 relative z-10">
+          {/* Label Badge */}
+          <div className="inline-block mb-4">
+            <span className="bg-orange-100 text-[#F97316] text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">
+              What We Offer
+            </span>
+          </div>
+
+          {/* BIG HEADING */}
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-800 leading-tight mb-6">
+            Our Specialized <br />
+            <span className="text-[#3EB8A7]">Mental Health</span> Services
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Explore our wide range of mental health services designed to support your well-being.
+
+          <p className="text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed">
+            We provide a comprehensive range of therapy and support services tailored to help you navigate life's challenges.
           </p>
         </div>
 
-        {/* Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        {/* Services Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
           {servicesData.map((s, i) => (
             <Link
               to={`/services/${s.slug}`}
               key={i}
-              className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition group"
+              className="group relative bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100 hover:border-[#3EB8A7]/30 transition-all duration-500 hover:-translate-y-2"
             >
-              {/* Image */}
-              <img
-                src={`/images/services/${s.slug}.jpg`}
-                alt={s.title}
-                className="h-48 w-full object-cover group-hover:scale-105 transition"
-              />
+              {/* Image Section */}
+              <div className="relative h-56 overflow-hidden">
+                <img
+                  src={`/images/services/${s.slug}.jpg`}
+                  alt={s.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                
+                {/* Gradient Overlay for better visual depth */}
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+               
+              </div>
 
-              {/* Content */}
-              <div className="p-5">
-                <h3 className="text-xl font-bold text-primary mb-2">
+              {/* Accent Line (Animates on hover) */}
+              <div className="h-1 w-0 bg-[#F97316] group-hover:w-full transition-all duration-500"></div>
+
+              {/* Content Section */}
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-slate-800 mb-3 group-hover:text-[#3EB8A7] transition-colors">
                   {s.title}
                 </h3>
 
-                <p className="text-gray-600 text-sm mb-3">
+                <p className="text-slate-500 text-sm leading-relaxed mb-5 line-clamp-2">
                   {s.desc}
                 </p>
 
-                <span className="text-primary font-semibold">
-                  Learn More →
-                </span>
+                {/* CTA Pill */}
+                <div className="flex items-center text-[#F97316] font-bold text-sm">
+                  <span className="mr-2">View Details</span>
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    className="h-4 w-4 transition-transform group-hover:translate-x-2" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </div>
               </div>
             </Link>
           ))}

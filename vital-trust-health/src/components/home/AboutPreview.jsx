@@ -1,70 +1,142 @@
- import Container from "../layout/Container";
+import Container from "../layout/Container";
 import { Link } from "react-router-dom";
 
 const AboutPreview = () => {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-24 bg-slate-50 relative overflow-hidden">
+      
+      {/* Decorative Background Elements */}
+      <div className="absolute top-0 left-0 w-full h-full">
+        <div className="absolute top-[-10%] left-[-5%] w-96 h-96 bg-teal-500/10 rounded-full blur-[120px]"></div>
+        <div className="absolute bottom-[-10%] right-[-5%] w-96 h-96 bg-orange-500/10 rounded-full blur-[120px]"></div>
+      </div>
+
       <Container>
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-center relative z-10">
 
-          {/* Image */}
-          <div>
-            <img
-              src="/images/about.jpg"
-              alt="About Vital Trust"
-              className="rounded-2xl shadow-lg"
-            />
-          </div>
-
-          {/* Content */}
-          <div>
-            <h2 className="text-4xl font-bold text-primary mb-4">
-              About Vital Trust Health
-            </h2>
-
-            <p className="text-gray-600 mb-4 leading-relaxed">
-              At Vital Trust Health LLC, we are committed to providing compassionate,
-              confidential, and professional mental health care tailored to your needs.
-              We believe that everyone deserves access to a safe space where they can
-              heal, grow, and thrive.
-            </p>
-
-            <p className="text-gray-600 mb-6 leading-relaxed">
-              Our experienced team supports individuals, couples, and families through
-              personalized therapy approaches designed to improve emotional well-being
-              and overall quality of life.
-            </p>
-
-            {/* Highlights */}
-            <div className="grid grid-cols-2 gap-4 mb-6">
-              <div className="bg-secondary p-4 rounded-xl text-center">
-                <h3 className="font-bold text-primary text-lg">100% Confidential</h3>
-              </div>
-              <div className="bg-secondary p-4 rounded-xl text-center">
-                <h3 className="font-bold text-primary text-lg">Expert Care</h3>
-              </div>
-              <div className="bg-secondary p-4 rounded-xl text-center">
-                <h3 className="font-bold text-primary text-lg">Online & Offline</h3>
-              </div>
-              <div className="bg-secondary p-4 rounded-xl text-center">
-                <h3 className="font-bold text-primary text-lg">Trusted Support</h3>
+          {/* Image Section with Composition */}
+          <div className="relative" data-aos="fade-right">
+            
+            {/* Decorative Shape behind image */}
+            <div className="absolute -inset-4 bg-gradient-to-br from-[#3EB8A7] to-[#2F9E8F] rounded-3xl rotate-3 opacity-20 blur-sm"></div>
+            
+            <div className="relative">
+              <img
+                src="/images/about.jpg"
+                alt="About Vital Trust"
+                className="rounded-3xl shadow-2xl w-full h-[500px] object-cover relative z-10"
+              />
+              
+              {/* Floating Stats Card (Replaces simple badge) */}
+              <div className="absolute -bottom-8 -right-4 md:right-8 bg-white p-6 rounded-2xl shadow-xl z-20 border border-slate-100">
+                <div className="flex items-center gap-4">
+                  <div className="bg-orange-100 p-3 rounded-full">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-[#F97316]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-2xl font-bold text-slate-800">10+</h4>
+                    <p className="text-sm text-slate-500 font-medium">Years Experience</p>
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
 
-            {/* CTA */}
-            <div className="flex gap-4">
-              <Link
-                to="/about"
-                className="bg-primary text-white px-6 py-3 rounded-lg"
-              >
-                Learn More
-              </Link>
+          {/* Content Section */}
+          <div className="lg:pl-8" data-aos="fade-left">
+            
+            {/* Label */}
+            <div className="inline-block mb-4">
+              <span className="bg-teal-100 text-[#2F9E8F] text-sm font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">
+                Who We Are
+              </span>
+            </div>
 
+            {/* BIG HEADING */}
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 text-slate-800 tracking-tight">
+              We Provide <br />
+              <span className="text-[#3EB8A7]">Premium</span> Mental <br />
+              <span className="text-[#F97316]">Health Care</span>
+            </h2>
+
+            <p className="text-lg text-slate-600 mb-6 leading-relaxed">
+              At <strong>Vital Trust Health LLC</strong>, we are committed to providing compassionate, confidential, and professional mental health care tailored to your needs. We believe that everyone deserves access to a safe space where they can heal, grow, and thrive.
+            </p>
+
+            <p className="text-slate-500 mb-10 leading-relaxed border-l-4 border-[#F97316] pl-4 italic">
+              "Our experienced team supports individuals, couples, and families through personalized therapy approaches designed to improve emotional well-being."
+            </p>
+
+            {/* Highlights Grid (Improved) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10">
+              
+              {/* Card 1 */}
+              <div className="flex items-center gap-4 p-4 bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-lg hover:border-teal-200 transition-all duration-300 group">
+                <div className="bg-teal-50 p-3 rounded-lg text-[#3EB8A7] group-hover:bg-[#3EB8A7] group-hover:text-white transition-all">
+                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                   </svg>
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-800">Confidential</h3>
+                  <p className="text-sm text-slate-500">Safe & Secure</p>
+                </div>
+              </div>
+
+              {/* Card 2 */}
+              <div className="flex items-center gap-4 p-4 bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-lg hover:border-teal-200 transition-all duration-300 group">
+                <div className="bg-teal-50 p-3 rounded-lg text-[#3EB8A7] group-hover:bg-[#3EB8A7] group-hover:text-white transition-all">
+                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                   </svg>
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-800">Expert Care</h3>
+                  <p className="text-sm text-slate-500">Certified Team</p>
+                </div>
+              </div>
+
+              {/* Card 3 */}
+              <div className="flex items-center gap-4 p-4 bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-lg hover:border-teal-200 transition-all duration-300 group">
+                <div className="bg-teal-50 p-3 rounded-lg text-[#3EB8A7] group-hover:bg-[#3EB8A7] group-hover:text-white transition-all">
+                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                   </svg>
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-800">Online Session</h3>
+                  <p className="text-sm text-slate-500">Remote Support</p>
+                </div>
+              </div>
+
+              {/* Card 4 */}
+              <div className="flex items-center gap-4 p-4 bg-white rounded-xl border border-slate-100 shadow-sm hover:shadow-lg hover:border-teal-200 transition-all duration-300 group">
+                <div className="bg-teal-50 p-3 rounded-lg text-[#3EB8A7] group-hover:bg-[#3EB8A7] group-hover:text-white transition-all">
+                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                   </svg>
+                </div>
+                <div>
+                  <h3 className="font-bold text-slate-800">Support Group</h3>
+                  <p className="text-sm text-slate-500">Community Care</p>
+                </div>
+              </div>
+
+            </div>
+
+            {/* CTA Button */}
+            <div className="flex items-center gap-6">
               <Link
-                to="/contact"
-                className="border border-primary text-primary px-6 py-3 rounded-lg"
+                to="/about-us"
+                className="inline-flex items-center bg-[#F97316] text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg shadow-orange-200 
+                hover:bg-[#EA580C] hover:scale-105 transition-all duration-300"
               >
-                Contact Us
+                Discover More 
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
               </Link>
             </div>
 

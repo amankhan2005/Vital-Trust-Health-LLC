@@ -12,12 +12,15 @@ function App() {
       {/* Auto scroll on route change */}
       <RouteScrollTop />
 
-      {/* Layout */}
+      {/* Navbar */}
       <Navbar />
 
-      {/* Pages */}
-      <AppRoutes />
+      {/* Pages with top spacing (IMPORTANT) */}
+      <main className="pt-20">
+        <AppRoutes />
+      </main>
 
+      {/* Footer */}
       <Footer />
 
       {/* Floating Scroll Button */}

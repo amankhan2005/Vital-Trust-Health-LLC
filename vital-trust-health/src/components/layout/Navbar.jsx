@@ -1,105 +1,174 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import Container from "./Container";
+ import { useState } from "react";
+import { NavLink } from "react-router-dom";
+
+// 1. Extracted data to keep code clean and avoid repetition
+const servicesList = [
+  { name: "Individual Therapy", path: "/services/individual-therapy" },
+  { name: "Couples Therapy", path: "/services/couples-therapy" },
+  { name: "Anxiety & Depression", path: "/services/anxiety-depression" },
+  { name: "Stress Management", path: "/services/stress-management" },
+  { name: "Trauma Therapy", path: "/services/trauma-therapy" },
+  { name: "Online Counseling", path: "/services/online-counseling" },
+];
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [serviceOpen, setServiceOpen] = useState(false);
 
+  // Helper for active link styling
+  const linkClasses = ({ isActive }) =>
+    `transition-colors duration-200 ${
+      isActive
+        ? "text-teal-600 font-semibold"
+        : "text-gray-600 hover:text-teal-600"
+    }`;
+
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
-      <Container>
-        <div className="flex items-center justify-between h-16">
+<nav className="w-full bg-white shadow-sm fixed top-0 left-0 z-[9999]">
+        <div className="max-w-[1200px] mx-auto px-6">
+        {/* TOP BAR */}
+        <div className="flex items-center justify-between h-20">
           
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <img src="/images/logo.png" alt="logo" className="h-10" />
-            <span className="font-bold text-primary text-lg">
-              Vital Trust
-            </span>
-          </Link>
+          {/* LOGO */}
+          <NavLink to="/" className="flex items-center gap-3">
+            <img 
+              src="/images/logo.png" 
+              alt="Vital Trust Logo" 
+              className="h-10 md:h-12 object-contain" 
+            />
+            <div>
+              <h1 className="font-bold text-teal-600 text-base md:text-lg leading-none tracking-tight">
+                Vital Trust
+              </h1>
+              <p className="text-[10px] md:text-xs text-gray-400 uppercase tracking-widest -mt-0.5">
+                Health LLC
+              </p>
+            </div>
+          </NavLink>
 
-          {/* Desktop Menu */}
-          <ul className="hidden md:flex items-center gap-8 font-medium text-gray-700">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
+          {/* DESKTOP MENU */}
+          <ul className="hidden md:flex items-center gap-8 font-medium">
+            <li><NavLink to="/" className={linkClasses}>Home</NavLink></li>
+            <li><NavLink to="/about-us" className={linkClasses}>About</NavLink></li>
 
-            {/* Services Dropdown */}
+            {/* SERVICES DROPDOWN */}
             <li className="relative group">
-              <span className="cursor-pointer flex items-center gap-1">
-                Services ▾
+              <span className="cursor-pointer text-gray-600 hover:text-teal-600 transition-colors duration-200 flex items-center gap-1">
+                Services 
+                <svg className="w-4 h-4 transform group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
               </span>
-
-              <ul className="absolute top-8 left-0 hidden group-hover:block bg-white shadow-lg rounded-xl p-4 w-64 space-y-2">
-                <li><Link to="/services/individual-therapy">Individual Therapy</Link></li>
-                <li><Link to="/services/couples-therapy">Couples Therapy</Link></li>
-                <li><Link to="/services/anxiety-depression">Anxiety & Depression</Link></li>
-                <li><Link to="/services/stress-management">Stress Management</Link></li>
-                <li><Link to="/services/trauma-therapy">Trauma Therapy</Link></li>
-                <li><Link to="/services/online-counseling">Online Counseling</Link></li>
+              
+              {/* Invisible bridge to keep hover open while moving cursor */}
+              <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full w-48 h-4"></div>
+              
+              <ul className="absolute top-full left-0 mt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 bg-white shadow-xl rounded-lg py-3 px-2 space-y-1 text-sm border border-gray-100">
+                {servicesList.map((item) => (
+                  <li key={item.path}>
+                    <NavLink 
+                      to={item.path} 
+                      className="block px-4 py-2 rounded-md text-gray-600 hover:bg-teal-50 hover:text-teal-600 transition-colors"
+                    >
+                      {item.name}
+                    </NavLink>
+                  </li>
+                ))}
               </ul>
             </li>
 
-            <li><Link to="/faq">FAQ</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
+            <li><NavLink to="/faq" className={linkClasses}>FAQ</NavLink></li>
+            {/* <li><NavLink to="/contact-us" className={linkClasses}>Contact</NavLink></li> */}
           </ul>
 
-          {/* CTA Button */}
-          <Link
-            to="/contact"
-            className="hidden md:block bg-primary text-white px-4 py-2 rounded-lg"
-          >
-            Book Now
-          </Link>
+          {/* CTA (Desktop) */}
+          <div className="hidden md:block">
+            <NavLink
+              to="/contact-us"
+              className="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2.5 rounded-full font-medium shadow-sm transition-colors duration-200"
+            >
+              Book Appointment
+            </NavLink>
+          </div>
 
-          {/* Mobile Menu Button */}
+          {/* MOBILE MENU BUTTON */}
           <button
-            className="md:hidden text-2xl"
             onClick={() => setMenuOpen(!menuOpen)}
+            className="md:hidden p-2 rounded-md text-gray-600 hover:bg-gray-100 focus:outline-none"
+            aria-label="Toggle menu"
           >
-            ☰
+            {menuOpen ? (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
           </button>
         </div>
+      </div>
 
-        {/* Mobile Menu */}
-        {menuOpen && (
-          <div className="md:hidden mt-4 space-y-4 pb-4">
-            <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
-            <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
+      {/* MOBILE MENU */}
+      {/* Added animation classes for smooth entry */}
+      <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${menuOpen ? 'max-h-screen border-t opacity-100' : 'max-h-0 opacity-0'}`}>
+        <div className="bg-white px-6 py-4 space-y-3 shadow-lg">
+          
+          <NavLink to="/" onClick={() => setMenuOpen(false)} className={({isActive}) => isActive ? "block text-teal-600 font-semibold" : "block text-gray-700"}>
+            Home
+          </NavLink>
+          <NavLink to="/about-us" onClick={() => setMenuOpen(false)} className={({isActive}) => isActive ? "block text-teal-600 font-semibold" : "block text-gray-700"}>
+            About
+          </NavLink>
 
-            {/* Mobile Services */}
-            <div>
-              <button
-                onClick={() => setServiceOpen(!serviceOpen)}
-                className="w-full text-left"
-              >
-                Services ▾
-              </button>
-
-              {serviceOpen && (
-                <div className="ml-4 mt-2 space-y-2">
-                  <Link to="/services/individual-therapy">Individual Therapy</Link>
-                  <Link to="/services/couples-therapy">Couples Therapy</Link>
-                  <Link to="/services/anxiety-depression">Anxiety & Depression</Link>
-                  <Link to="/services/stress-management">Stress Management</Link>
-                  <Link to="/services/trauma-therapy">Trauma Therapy</Link>
-                  <Link to="/services/online-counseling">Online Counseling</Link>
-                </div>
-              )}
-            </div>
-
-            <Link to="/faq">FAQ</Link>
-            <Link to="/contact">Contact</Link>
-
-            <Link
-              to="/contact"
-              className="block bg-primary text-white px-4 py-2 rounded-lg text-center"
+          {/* MOBILE SERVICES ACCORDION */}
+          <div>
+            <button
+              onClick={() => setServiceOpen(!serviceOpen)}
+              className="w-full flex justify-between items-center text-gray-700 font-medium py-1"
             >
-              Book Now
-            </Link>
+              Services
+              <svg className={`w-4 h-4 transition-transform duration-300 ${serviceOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            <div className={`overflow-hidden transition-all duration-300 ${serviceOpen ? 'max-h-96 mt-2' : 'max-h-0'}`}>
+              <div className="pl-4 space-y-2 border-l-2 border-gray-100">
+                {servicesList.map((item) => (
+                  <NavLink 
+                    key={item.path}
+                    to={item.path} 
+                    onClick={() => setMenuOpen(false)}
+                    className={({isActive}) => `block py-1 text-sm ${isActive ? 'text-teal-600' : 'text-gray-600'}`}
+                  >
+                    {item.name}
+                  </NavLink>
+                ))}
+              </div>
+            </div>
           </div>
-        )}
-      </Container>
+
+          <NavLink to="/faq" onClick={() => setMenuOpen(false)} className={({isActive}) => isActive ? "block text-teal-600 font-semibold" : "block text-gray-700"}>
+            FAQ
+          </NavLink>
+          {/* <NavLink to="/contact-us" onClick={() => setMenuOpen(false)} className={({isActive}) => isActive ? "block text-teal-600 font-semibold" : "block text-gray-700"}>
+            Contact
+          </NavLink> */}
+
+          {/* CTA (Mobile) */}
+          <div className="pt-4">
+            <NavLink
+              to="/contact-us"
+              onClick={() => setMenuOpen(false)}
+              className="block w-full text-center bg-teal-600 text-white px-4 py-3 rounded-full font-medium shadow-sm"
+            >
+              Book Appointment
+            </NavLink>
+          </div>
+        </div>
+      </div>
     </nav>
   );
 };

@@ -7,8 +7,7 @@ import FAQPage from "../pages/FAQ/FAQPage";
 import ContactPage from "../pages/Contact/ContactPage";
 
 // Services
-import ServicesPage from "../pages/Services/ServicesPage";
-import IndividualTherapy from "../pages/Services/IndividualTherapy";
+ import IndividualTherapy from "../pages/Services/IndividualTherapy";
 import CouplesTherapy from "../pages/Services/CouplesTherapy";
 import AnxietyDepression from "../pages/Services/AnxietyDepression";
 import StressManagement from "../pages/Services/StressManagement";
@@ -20,13 +19,12 @@ const AppRoutes = () => {
     <Routes>
       {/* Main */}
       <Route path="/" element={<HomePage />} />
-      <Route path="/about" element={<AboutPage />} />
+      <Route path="/about-us" element={<AboutPage />} />
       <Route path="/faq" element={<FAQPage />} />
-      <Route path="/contact" element={<ContactPage />} />
+      <Route path="/contact-us" element={<ContactPage />} />
 
       {/* Services */}
-      <Route path="/services" element={<ServicesPage />} />
-      <Route path="/services/individual-therapy" element={<IndividualTherapy />} />
+       <Route path="/services/individual-therapy" element={<IndividualTherapy />} />
       <Route path="/services/couples-therapy" element={<CouplesTherapy />} />
       <Route path="/services/anxiety-depression" element={<AnxietyDepression />} />
       <Route path="/services/stress-management" element={<StressManagement />} />
