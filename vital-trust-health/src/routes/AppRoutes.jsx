@@ -6,8 +6,11 @@ import AboutPage from "../pages/About/AboutPage";
 import FAQPage from "../pages/FAQ/FAQPage";
 import ContactPage from "../pages/Contact/ContactPage";
 
-// Services
- import IndividualTherapy from "../pages/Services/IndividualTherapy";
+// Services Main Page
+import Services from "../pages/Services/ServicePage";
+
+// Individual Services
+import IndividualTherapy from "../pages/Services/IndividualTherapy";
 import CouplesTherapy from "../pages/Services/CouplesTherapy";
 import AnxietyDepression from "../pages/Services/AnxietyDepression";
 import StressManagement from "../pages/Services/StressManagement";
@@ -23,8 +26,11 @@ const AppRoutes = () => {
       <Route path="/faq" element={<FAQPage />} />
       <Route path="/contact-us" element={<ContactPage />} />
 
-      {/* Services */}
-       <Route path="/services/individual-therapy" element={<IndividualTherapy />} />
+      {/* ✅ ALL SERVICES PAGE */}
+      <Route path="/services" element={<Services />} />
+
+      {/* Individual Services */}
+      <Route path="/services/individual-therapy" element={<IndividualTherapy />} />
       <Route path="/services/couples-therapy" element={<CouplesTherapy />} />
       <Route path="/services/anxiety-depression" element={<AnxietyDepression />} />
       <Route path="/services/stress-management" element={<StressManagement />} />

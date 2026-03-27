@@ -12,7 +12,7 @@ const ContactInfo = () => {
       <div className="space-y-6 relative z-10">
 
         {/* Address */}
-        <a
+        {/* <a
           href="https://maps.google.com/?q=1205+Lobo+Court+Abingdon+MD+21009"
           target="_blank"
           rel="noopener noreferrer"
@@ -27,7 +27,7 @@ const ContactInfo = () => {
               1205 Lobo Court, Abingdon MD 21009
             </p>
           </div>
-        </a>
+        </a> */}
 
         {/* Phone */}
         <a

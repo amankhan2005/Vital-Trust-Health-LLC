@@ -43,9 +43,11 @@ const ContactPage = () => {
               <ContactInfo />
 
               {/* Optional: Map or Extra Info Card */}
-              <div className="bg-slate-100 rounded-3xl overflow-hidden mt-6 shadow-lg border border-slate-100 h-48 relative group">
+
+
+              {/* <div className="bg-slate-100 rounded-3xl overflow-hidden mt-6 shadow-lg border border-slate-100 h-48 relative group">
                 <div className="absolute inset-0 bg-gray-300 animate-pulse"></div>
-                {/* Placeholder for Google Map iframe if you have one */}
+                 
                 <div className="relative w-full h-[400px] rounded-2xl overflow-hidden">
 
                   <iframe
@@ -53,7 +55,7 @@ const ContactPage = () => {
                     className="absolute inset-0 w-full h-full border-0"
                   />
 
-                  {/* Glass Card */}
+             
                   <div className="absolute bottom-6 left-6 bg-white/80 backdrop-blur-xl p-4 rounded-xl shadow-lg">
                     <h4 className="font-bold text-slate-800">Our Location</h4>
                     <p className="text-sm text-slate-600">
@@ -63,7 +65,9 @@ const ContactPage = () => {
                   </div>
 
                 </div>
-              </div>
+              </div> */}
+
+              
             </div>
           </div>
 

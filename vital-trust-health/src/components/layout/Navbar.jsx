@@ -53,12 +53,21 @@ const Navbar = () => {
 
             {/* SERVICES DROPDOWN */}
             <li className="relative group">
-              <span className="cursor-pointer text-gray-600 hover:text-teal-600 transition-colors duration-200 flex items-center gap-1">
-                Services 
+              <NavLink
+  to="/services"
+  className={({ isActive }) =>
+    `flex items-center gap-1 transition-colors duration-200 ${
+      isActive
+        ? "text-teal-600 font-semibold"
+        : "text-gray-600 hover:text-teal-600"
+    }`
+  }
+>
+  Services
                 <svg className="w-4 h-4 transform group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
-              </span>
+              </NavLink>
               
               {/* Invisible bridge to keep hover open while moving cursor */}
               <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full w-48 h-4"></div>

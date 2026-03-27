@@ -133,7 +133,7 @@ const Footer = () => {
 
             <div className="space-y-4">
               {/* Address */}
-              <div className="flex gap-3 group">
+              {/* <div className="flex gap-3 group">
                 <div className="mt-1 text-orange-400 group-hover:scale-110 transition-transform">
                   <SvgMapPin />
                 </div>
@@ -145,7 +145,7 @@ const Footer = () => {
                 >
                   1205 Lobo Court, <br /> Abingdon MD 21009
                 </a>
-              </div>
+              </div> */}
 
               {/* Phone */}
               <div className="flex gap-3 group">
